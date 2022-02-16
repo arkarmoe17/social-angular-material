@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './utils/_services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'angular_shop_buyer';
+  title = 'Social Admin App';
+
+  constructor(private authService: AuthService) {}
 }

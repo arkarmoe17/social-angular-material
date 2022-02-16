@@ -1,0 +1,32 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" (click)="mobileLogin()">Mobile Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" (click)="emailLogin()">Email Login</a>
+    </li>
+</ul>
+<form class="form-sample" [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="container">
+        <div *ngIf="isMobileLogin">
+            <label for="mobile">Enter Mobile</label>
+            <input type="text" id="mobile" name="mobile" class="form-control" formControlName="mobile">
+        </div>
+
+        <div *ngIf="!isMobileLogin">
+            <label for="email">Enter Email</label>
+            <input type="text" id="email" name="email" class="form-control" formControlName="email">
+        </div>
+
+
+        <label for="password">Enter Password</label>
+        <input type="password" id="password" name="password" class="form-control" formControlName="password" required>
+
+        <div>
+            <input type="checkbox" id="terms" #terms>I accept all terms & conditions.
+            <a href="#" class="block">Forget Password</a>
+        </div>
+
+        <button type="submit" class="btn btn-info">Login</button>
+    </div>
+</form>

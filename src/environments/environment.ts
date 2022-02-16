@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // backend_URL: "http://192.168.100.241:8080/buyer_latest"
+  base_url: "http://localhost:8080/social-admin",
+  TAILWIND_MODE: 'build'
 };
 
 /*

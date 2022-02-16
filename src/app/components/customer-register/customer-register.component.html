@@ -1,0 +1,79 @@
+
+<button class="btn btn-primary" (click)="forgetPassword()">Forget Password</button>
+<form class="form-sample" [formGroup]="registerForm" (ngSubmit)="customerRegister()">
+    <div class="container">
+        <label for="mobile">Mobile: </label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <select name="country" id="" class="form-control p-3" formControlName="country">
+                <option *ngFor="let country of countries;  trackBy:trackCountry" value={{country.countryCode}} >{{country.countryCode}}</option>
+              </select>
+            </div>
+            <span class="input-group-text">9</span>
+            <input type="text" id="mobile" name="mobile" class="form-control" #mobile
+            formControlName="mobile" required minlength="8" style="display: block; margin-right: 2px;">
+            
+            <div *ngIf="customerMobile.invalid && customerMobile.touched" class="alert alert-danger">
+                <div *ngIf="customerMobile.errors && customerMobile.errors['required']">Mobile is required.</div>
+                <div *ngIf="customerMobile.errors?.['mobileInvalid']">Invalid Mobile Number.</div>
+            </div>
+        </div>
+        <div *ngIf="!customerMobile.errors?.['mobileInvalid'] && !customerMobile.errors?.['required']">
+            <button type="button" (click)="getotp(mobile.value)" class="btn btn-info mx-2 my-2" [class.d-none]="isVerifySuccess" [disabled]=buttonDisabled>{{btnOtp}}</button> 
+        </div>
+        <div *ngIf="customerOtp.errors?.['incorrect']" class="alert alert-danger">Invalid OTP Code.</div>
+
+
+        <input type="text" id="otpcode" formControlName="otpcode" #otp style="display: inline; margin-right: 2px">
+        <button type="button" (click)="verify()" class="btn" [class.btn-success]="verifyDisabled" 
+            [class.btn-info]="!verifyDisabled" [disabled]=verifyDisabled>{{btnVerify}}</button>
+
+        <label for="name">Customer Name: </label>
+        <input type="text" id="name" name="name" class="form-control my-2" formControlName="name" placeholder="name" >
+        <div *ngIf="customerName.touched && customerName.invalid" class="alert alert-danger">
+            <div *ngIf="customerName.errors && customerName.errors['required']">Name is required.</div>
+            <div *ngIf="customerName.errors && customerName.errors['minlength']">Name should be 4 character.</div>
+        </div>
+
+
+
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" class="form-control my-2" 
+            formControlName="password">
+            <div class="field-message" *ngIf="customerPassword.errors?.['passwordStrength']" class="alert alert-danger">
+                Your password must have lower case, upper case and numeric characters.
+            </div>
+        <div *ngIf="customerPassword.touched && customerPassword.invalid" class="alert alert-danger">
+            <div *ngIf="customerPassword.errors && customerPassword.errors['required']">Password is required.</div>
+            <div *ngIf="customerPassword.errors && customerPassword.errors['minlength']">Password should be 6 character.</div>
+        </div>
+
+
+
+        <label for="gender">Gender: </label>
+        <input type="radio" formControlName="gender" value="1" required> MALE
+        <input type="radio" formControlName="gender" value="2" required> FEMALE
+        <div *ngIf="customerGender.touched && customerGender.invalid" class="alert alert-danger">
+            <div *ngIf="customerGender.errors && customerGender.errors['required']">Gender is required.</div>
+        </div>
+
+
+
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email" class="form-control my-2"
+            formControlName="email" required>
+        <div *ngIf="customerEmail.touched && customerEmail.invalid" class="alert alert-danger">
+            <div *ngIf="customerEmail.errors && customerEmail.errors['required']">Email is required.</div>
+            <div *ngIf="customerEmail.errors && customerEmail.errors['pattern']">Please, enter a valid email address.</div>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-info mt-2" [disabled]="!registerForm.valid">Submit</button>
+        <button type="button" class="btn btn-danger ml-2 mt-2" (click)="backToMain()">Back</button>
+    </div>
+    
+</form>
+
+
+
