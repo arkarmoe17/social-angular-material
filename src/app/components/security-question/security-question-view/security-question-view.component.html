@@ -1,6 +1,9 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="container py-6">
     <div class="flex flex-col">
+      <div class="pb-3 pt-3">
+        <button mat-raised-button color="primary" (click)="createModal()">Create</button>
+      </div>
       <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -19,8 +22,8 @@
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-semibold">{{question.questionType}}</td>
                   <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-semibold">{{question.question}}</td>
                   <td class="px-6 py-4 whitespace-nowrap">
-                    <button class="text-indigo-600 hover:text-indigo-900 pr-2" >Edit</button>
-                    <button class="text-red-600 hover:text-red-400" (click)="delete(question.id)">Delete</button>
+                    <button class="text-indigo-600 hover:text-indigo-900 pr-2" (click)="updateModal(question)" >Edit</button>
+                    <button class="text-red-600 hover:text-red-400" (click)="deleteModal(question.id)">Delete</button>
                   </td>
                 </tr>
                 <!-- More people... -->

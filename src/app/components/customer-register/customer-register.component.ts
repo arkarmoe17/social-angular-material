@@ -6,8 +6,8 @@ import { CustomerRegister } from '../../utils/_entities/customer/customer-regist
 import { Otp } from '../../utils/_entities/customer/otp';
 import { Country } from '../../utils/_entities/master-data/country';
 import { CountryList } from '../../utils/_entities/master-data/country-list';
-import { AuthService } from '../../utils/_services/auth.service';
-import { CustomerService } from '../../utils/_services/customer.service';
+import { AuthService } from '../../services/auth.service';
+import { CustomerService } from '../../services/customer.service';
 import { createMobileNumberValidator } from '../../utils/_validators/register/mobile-number-validator';
 import { createPasswordStrengthValidator } from '../../utils/_validators/register/password-strength-validator';
 

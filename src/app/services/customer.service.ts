@@ -1,16 +1,20 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams, HttpResponse  } from '@angular/common/http';
-import { catchError, Observable, of } from 'rxjs';
-import { CustomerRegister } from '../_entities/customer/customer-register';
-import { environment } from 'src/environments/environment';
-import { ServerResponse } from '../_commons/server-response';
+import { Observable } from 'rxjs';
+import { CUSTOMER, MASTER_DATA, REGISTER } from '../utils/_constants/api-constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+  register_url = REGISTER
+  master_data_url = MASTER_DATA;
+  get_otp_url = CUSTOMER.GET_OTP;
+  validate_otp_url = CUSTOMER.VALIDATE_OTP;
+  forgot_password_url = CUSTOMER.FORGOT_PASSWORD;
+  find_by_mobile_url = CUSTOMER.FIND_BY_MOBILE;
+  find_by_email_url = CUSTOMER.FIND_BY_EMAIL;
 
-  baseURL = environment.base_url;
 
   httpurlencodedOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'})
@@ -32,9 +36,7 @@ export class CustomerService {
       .set(`gender`, model.gender)
       .set(`email`, model.email)
       .set(`mobile`, model.mobile);
-    return this.http.post<any>(this.baseURL + '/register/customerRegister',
-      requestBody, 
-      this.httpurlencodedOptions);
+    return this.http.post<any>(this.register_url, requestBody,  this.httpurlencodedOptions);
   }
 
   forgetPassword() {
@@ -42,26 +44,26 @@ export class CustomerService {
       .set(`mobile`, `959797460830`)
       .set(`newPassword`, `Mur@2994`)
       .set(`confirmPassword`, `Mur@2994`)
-    return this.http.post<any>(this.baseURL + '/profile/forgotPasswordChange', requestBody, this.httpurlencodedOptions);
+    return this.http.post<any>(this.forgot_password_url, requestBody, this.httpurlencodedOptions);
   }
 
   otpVerify(mobile: string, otp: string) {
-    return this.http.get<any>(this.baseURL + '/register/validateOTP?mobile=' + mobile + '&otpCode=' + otp, this.httpurlencodedOptions )
+    return this.http.get<any>(`${this.validate_otp_url}?mobile=` + mobile + '&otpCode=' + otp, this.httpurlencodedOptions )
   }
 
   getCountryList(): Observable<any> {
-    return this.http.get<any>(this.baseURL + '/masterData/getCountryList');
+    return this.http.get<any>(this.master_data_url.COUNTRY);
   }
 
   findUserByEmail(email: string): Observable<any> {
-    return this.http.get<any>(this.baseURL + '/api/email?email=' + email);
+    return this.http.get<any>(this.find_by_email_url + email);
   }
 
   findUserByMobile(mobile: string): Observable<any> {
-    return this.http.get<any>(this.baseURL + '/api/mobile?mobile=' + mobile);
+    return this.http.get<any>(this.find_by_mobile_url + mobile);
   }
 
   getOtp(mobile: string) {
-    return this.http.get<any>(this.baseURL + '/register/getOTP?mobile=' + mobile);
+    return this.http.get<any>(this.get_otp_url + mobile);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterLoginCount } from 'src/app/utils/_entities/dashboard/register_login_count';
-import { DashboardService } from 'src/app/utils/_services/dashboard.service';
+import { DashboardService } from '../../services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',

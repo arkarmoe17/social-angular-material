@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AppParamService } from 'src/app/utils/_services/app-param.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AppParamService } from '../../../services/app-param.service';
+import { AppParamUpdateComponent } from '../app-param-update/app-param-update.component';
 
 export interface AppParam {
   id: number,
@@ -18,6 +20,8 @@ export class AppParamViewComponent implements OnInit {
 
   constructor(
     private appParamService : AppParamService,
+    public dialog: MatDialog,
+
   ) { }
 
 
@@ -30,6 +34,22 @@ export class AppParamViewComponent implements OnInit {
       }
     );
   }
+
+  editModal(param : AppParam){
+    const dialogRef = this.dialog.open(AppParamUpdateComponent, {
+      height: '400px',
+      width: '450px',
+      data: param,
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.reloadData();    
+    });
+  }
+
+  reloadData(){
+    this.getAllAppParameters();
+  }
+
 
   ngOnInit(): void {
     this.getAllAppParameters();

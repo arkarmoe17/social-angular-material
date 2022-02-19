@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { interval, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { CustomerService } from '../../services/customer.service';
 import { Country } from '../../utils/_entities/master-data/country';
-import { CountryList } from '../../utils/_entities/master-data/country-list';
-import { CustomerService } from '../../utils/_services/customer.service';
 
 
 @Component({

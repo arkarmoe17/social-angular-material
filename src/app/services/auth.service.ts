@@ -1,20 +1,15 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { CustomerLogin } from '../_entities/customer/customer-login';
-import { CustomerRegister } from '../_entities/customer/customer-register';
+import { LOGIN, REFRESH_TOKEN } from '../utils/_constants/api-constant';
+import { CustomerLogin } from '../utils/_entities/customer/customer-login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  //URL 
-  baseUrl = environment.base_url;
-  loginUrl = this.baseUrl +'/doLogin';
 
   jwtHelper = new JwtHelperService();
   decodedToken: any;
@@ -33,7 +28,7 @@ export class AuthService {
   ) { }
 
   refresh(): boolean {
-    this.http.get<any>(this.baseUrl + '/token/refresh')
+    this.http.get<any>(REFRESH_TOKEN)
       .subscribe(res => {
         const refresh_token = res;
         if (refresh_token && refresh_token.status === 'SUCCESS') {
@@ -68,7 +63,7 @@ export class AuthService {
     requestBody.set('loginId', model.mobile);
     requestBody.set('password', model.password);
 
-    return this.http.post(this.loginUrl, requestBody, this.httpurlencodedOptions).pipe(
+    return this.http.post(LOGIN, requestBody, this.httpurlencodedOptions).pipe(
       map((response: any) => {
         const customer = response;
         console.log("login resp:", customer);

@@ -23,7 +23,28 @@ import { SecurityQuestionViewComponent } from './security-question/security-ques
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
+import { ModalModule } from '../services/modal/modal.module';
+import { ModalComponent } from './modal/modal.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { SecurityQuestionDeleteComponent } from './security-question/security-question-delete/security-question-delete.component';
 
+const MaterialModule = [
+  ModalModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatTableModule,
+  MatIconModule,
+  MatDividerModule,
+  MatButtonModule,
+  MatInputModule
+]
 
 @NgModule({
   declarations: [
@@ -46,14 +67,23 @@ import { HeaderComponent } from './header/header.component';
     SecurityQuestionUpdateComponent,
     FooterComponent,
     CountryRemoveComponent,
-    HeaderComponent
+    HeaderComponent,
+    ModalComponent,
+    SecurityQuestionDeleteComponent,
   ],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
+    MaterialModule
+  ],
+  exports:[
+    MaterialModule
+  ],
+  providers:[
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
+    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ]
 })
 export class ComponentsModule { }

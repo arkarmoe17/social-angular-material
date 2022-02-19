@@ -1,1 +1,23 @@
-<p>security-question-update works!</p>
+<form [formGroup]="questionForm" (ngSubmit)="updateQuestion()">
+    <h2 mat-dialog-title>Update Security Question</h2>
+    <mat-divider style="padding-bottom: 10px;"></mat-divider>
+        <div class="input-container">
+          <mat-form-field appearance="fill"  style="width: 350px;">
+            <mat-label>Question Type</mat-label>
+            <input matInput type="number" [min]=0 placeholder="" [formControl]="questionType" required>
+            <mat-error *ngIf="questionType.invalid">{{'Pls pass the valid name, max<10'}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="input-container">
+          <mat-form-field appearance="fill" style="width: 350px;">
+            <mat-label>Question Name</mat-label>
+            <input matInput placeholder="" [formControl]="question" required>
+            <mat-error *ngIf="question.invalid">{{'Pls pass the valid name'}}</mat-error>
+          </mat-form-field>
+        </div>
+      <mat-dialog-actions align="end">
+        <button mat-button mat-raised-button color="primary" type="submit" [disabled]="questionForm.invalid">Confirm</button>
+        <button mat-button mat-raised-button [mat-dialog-close]="true" color="warn">Cancel</button>
+      </mat-dialog-actions>
+</form>
+  

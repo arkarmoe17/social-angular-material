@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/utils/_services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 class MockElementRef extends ElementRef {
   constructor() { super(undefined); }

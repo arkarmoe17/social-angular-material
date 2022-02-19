@@ -1,19 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { APP_PARAMETER } from '../utils/_constants/api-constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppParamService {
-  private app_param_url = environment.base_url + "/app-param";
+  app_param_url = APP_PARAMETER
 
   constructor(
     private httpClient: HttpClient,
   ) { }
 
   getAllAppParameters():Observable<any> {
-    return this.httpClient.get<any>(this.app_param_url + "/lists");
+    return this.httpClient.get<any>(`${this.app_param_url}/lists`);
+  }
+
+  update(id:number, data:any){
+    return this.httpClient.put(`${this.app_param_url}/${id}`,data);
   }
 }

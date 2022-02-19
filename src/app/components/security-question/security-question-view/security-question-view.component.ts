@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
-import { SecurityQuestionService } from 'src/app/utils/_services/security-question.service';
+import { SecurityQuestionService } from '../../../services/security-question.service';
+import { SecurityQuestionCreateComponent } from '../security-question-create/security-question-create.component';
+import { SecurityQuestionDeleteComponent } from '../security-question-delete/security-question-delete.component';
+import { SecurityQuestionUpdateComponent } from '../security-question-update/security-question-update.component';
 
 export interface SecurityQuestion {
   id: number;
@@ -16,6 +20,7 @@ export interface SecurityQuestion {
 export class SecurityQuestionViewComponent implements OnInit {
   questions: SecurityQuestion[] = [];
   constructor(
+    public dialog : MatDialog,
     private securityQuestionService: SecurityQuestionService,
   ) { }
 
@@ -30,6 +35,39 @@ export class SecurityQuestionViewComponent implements OnInit {
     );
   }
 
+  createModal(): void{
+    const dialogRef = this.dialog.open(SecurityQuestionCreateComponent, {
+      height: '400px',
+      width: '500px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.reloadData();    
+    });
+  }
+
+  deleteModal(id:number): void {
+    const dialogRef = this.dialog.open(SecurityQuestionDeleteComponent, {
+      height: '200px',
+      width: '400px',
+      data: {id:id},
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');  
+      this.reloadData();    
+    });
+  }
+
+  updateModal(question:SecurityQuestion){
+    const dialogRef = this.dialog.open(SecurityQuestionUpdateComponent,{
+      height: '400px',
+      width: '450px',
+      data: question,
+    });
+    dialogRef.afterClosed().subscribe(res=>{
+      this.reloadData();
+    })
+  }
+
   //delete 
   delete(id: number){
     console.log("deleted id:{}",id);
@@ -38,7 +76,7 @@ export class SecurityQuestionViewComponent implements OnInit {
       next: (data)=>{
         console.log(data);
         console.log("Status:{}",data.status)
-        this.reload();
+        this.reloadData();
       },
       error: (_e)=> console.error("error occur."),
       complete:()=> console.log("completed.")
@@ -46,7 +84,7 @@ export class SecurityQuestionViewComponent implements OnInit {
   }
 
   //reload 
-  reload(){
+  reloadData(){
     console.log("reloading.");
     this.getAllSecurityQuestions();
   }

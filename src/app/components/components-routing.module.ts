@@ -36,18 +36,6 @@ const routes: Routes = [
         component: CountryViewComponent,
       },
       {
-        path: 'country-create',
-        component: CountryCreateComponent,
-      },
-      {
-        path: 'country-update',
-        component: CountryUpdateComponent,
-      },
-      {
-        path: 'country-remove',
-        component: CountryRemoveComponent,
-      },
-      {
         path: 'app-param',
         component: AppParamViewComponent,
       },
