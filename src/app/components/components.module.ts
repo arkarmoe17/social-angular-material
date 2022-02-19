@@ -35,7 +35,7 @@ import {MatInputModule} from '@angular/material/input';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { SecurityQuestionDeleteComponent } from './security-question/security-question-delete/security-question-delete.component';
 
-const MaterialModule = [
+const MaterialModules = [
   ModalModule,
   MatDialogModule,
   MatFormFieldModule,
@@ -76,10 +76,10 @@ const MaterialModule = [
     ComponentsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModules
   ],
   exports:[
-    MaterialModule
+    MaterialModules
   ],
   providers:[
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
