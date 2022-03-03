@@ -3,18 +3,36 @@
   <h2 mat-dialog-title>Create Country</h2>
   <mat-divider style="padding-bottom: 10px;"></mat-divider>
       <div class="input-container">
-        <mat-form-field appearance="fill"  style="width: 350px;">
-          <mat-label>Country Code</mat-label>
-          <input matInput placeholder="Enter country code" [formControl]="countryCode" formControlName="countryCode" required>
-          <mat-error *ngIf="countryCode.invalid">{{'Pls pass the valid name, max<10'}}</mat-error>
+        <mat-form-field appearance="fill" [style.width.%]="100">
+          <mat-label>Country Name</mat-label>
+          <input matInput placeholder="" [formControl]="countryName" formControlName="countryName" required>
+          <mat-error *ngIf="countryName.invalid">{{'Pls pass the valid name'}}</mat-error>
         </mat-form-field>
       </div>
       <div class="input-container">
-        <mat-form-field appearance="fill" style="width: 350px;">
-          <mat-label>Country Name</mat-label>
-          <input matInput placeholder="Enter country code" [formControl]="countryName" formControlName="countryName" required>
-          <mat-error *ngIf="countryName.invalid">{{'Pls pass the valid name'}}</mat-error>
+        <mat-form-field appearance="fill" [style.width.%]="100">
+          <mat-label>Country Code</mat-label>
+          <input matInput placeholder="" [formControl]="countryCode" formControlName="countryCode" required>
+          <mat-error *ngIf="countryCode.invalid">{{'Pls pass the valid name. max length is 10!'}}</mat-error>
         </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="fill" [style.width.%]="100">
+          <mat-label>Country Nick</mat-label>
+          <input matInput placeholder="" [formControl]="countryNick" formControlName="countryNick" required>
+          <mat-error *ngIf="countryNick.invalid">{{'Pls pass the valid name. max length is 10!'}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <mat-form-field appearance="fill" [style.width.%]="100">
+            <mat-label>Country Prefix</mat-label>
+            <input type="text" matInput placeholder="" [formControl]="countryPrefix" formControlName="countryPrefix" required>
+            <mat-error *ngIf="countryPrefix.invalid">{{'Pls pass the valid name. max length is 10!'}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-container">
+        <input type="file" [formControl]="countryFlagUrl" formControlName="countryFlagUrl" (change)="onFileSelect($event)"/>
+        <mat-error *ngIf="countryFlagUrl.invalid && countryFlagUrl.touched">{{'Pls choose the file.'}}</mat-error>
       </div>
     <mat-dialog-actions align="end">
       <button mat-button mat-raised-button color="primary" type="submit" [disabled]="createCountryForm.invalid">Confirm</button>

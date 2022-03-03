@@ -34,6 +34,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { SecurityQuestionDeleteComponent } from './security-question/security-question-delete/security-question-delete.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+
 
 const MaterialModules = [
   ModalModule,
@@ -43,7 +50,11 @@ const MaterialModules = [
   MatIconModule,
   MatDividerModule,
   MatButtonModule,
-  MatInputModule
+  MatInputModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule,
+  MatTooltipModule
 ]
 
 @NgModule({
@@ -70,6 +81,7 @@ const MaterialModules = [
     HeaderComponent,
     ModalComponent,
     SecurityQuestionDeleteComponent,
+    SidenavComponent,
   ],
   imports: [
     CommonModule,

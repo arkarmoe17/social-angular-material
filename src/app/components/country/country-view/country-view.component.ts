@@ -12,7 +12,7 @@ import { CountryUpdateComponent } from '../country-update/country-update.compone
   templateUrl: './country-view.component.html',
 })
 export class CountryViewComponent implements OnInit {
-  displayedColumns: string[] = ['no', 'code', 'name', 'status'];
+  displayedColumns: string[] = ['no', 'name', 'code',"nick","prefix","flag_url", 'status'];
   countries: Country[] = [];
   showCountryModal = false;
   showUpdateModal = false;
@@ -24,8 +24,8 @@ export class CountryViewComponent implements OnInit {
 
   createModal():void{
     const dialogRef = this.dialog.open(CountryCreateComponent, {
-      height: '400px',
-      width: '500px',
+      height: '600px',
+      width: '600px',
     });
     dialogRef.afterClosed().subscribe(res => {
       this.reloadData();    
@@ -68,38 +68,6 @@ export class CountryViewComponent implements OnInit {
   ngOnInit(): void {
     this.getCountryLists();
   }
-
-  // openUpdateModal(country: Country) {
-  //   console.log("country:{}", country);
-  //   console.log("Click edit funtion button. {}", this.showCountryModal);
-  //   this.router.navigate(['/country-update', { state: { country: country } }]);
-  // }
-
-  // openRemoveModal(id: number) {
-  //   console.log("Remove country id:{}", id);
-  //   // this.router.navigate(['/country-remove']);
-  //   this.countryService.deleteCountry(id)
-  //     .subscribe(
-  //       {
-  //         next: (data) => {
-  //           console.log("data:{}", data);
-  //           //show success msg
-  //           this.reloadData();
-  //         },
-  //         error: (e) => console.error("error occur."),
-  //         complete: () => console.log("completed.")
-  //       }
-  //     );
-  // }
-
-
-  // toggleCreateModal() {
-  //   this.showCountryModal = !this.showCountryModal;
-  // }
-  // toggleUpdateModal() {
-  //   this.showUpdateModal = !this.showUpdateModal;
-  // }
-
  
 }
 function getCountryLists() {

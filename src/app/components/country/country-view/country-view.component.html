@@ -1,40 +1,55 @@
-
 <div class="mr-12 ml-12 mb-9">
   <div class="pb-3 pt-3">
     <button mat-raised-button color="primary" (click)="createModal()">Create</button>
   </div>
- 
+
   <table mat-table [dataSource]="countries" class="mat-elevation-z8">
 
     <ng-container matColumnDef="no">
       <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      <td mat-cell *matCellDef="let element, let i = index"> {{i+1}} </td>
     </ng-container>
-  
-   
-    <ng-container matColumnDef="code">
-      <th mat-header-cell *matHeaderCellDef> Country Code </th>
-      <td mat-cell *matCellDef="let element"> {{element.countryCode}} </td>
-    </ng-container>
-  
-  
+
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Country Name </th>
       <td mat-cell *matCellDef="let element"> {{element.country}} </td>
     </ng-container>
-  
-  
-    <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let element"> 
-        <button mat-button (click)="editModal(element)">
-          <mat-icon aria-hidden="false" aria-label="edit">edit</mat-icon>
-        </button>
-        <button mat-button (click)="deleteModal(element.id)"> <mat-icon aria-hidden="false" aria-label="delete">delete</mat-icon></button>
+
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Country Code </th>
+      <td mat-cell *matCellDef="let element"> {{element.countryCode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nick">
+      <th mat-header-cell *matHeaderCellDef> Country Nick </th>
+      <td mat-cell *matCellDef="let element"> {{element.countryNick}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="prefix">
+      <th mat-header-cell *matHeaderCellDef> Country Prefix </th>
+      <td mat-cell *matCellDef="let element"> {{element.countryPrefix}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="flag_url">
+      <th mat-header-cell *matHeaderCellDef> Country Flag Url </th>
+      <td mat-cell *matCellDef="let element">
+        <a href="{{element.countryFlagUrl}}" target="_blank">{{element.countryFlagUrl}}</a>
       </td>
     </ng-container>
 
-  
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button matTooltip="Update" (click)="editModal(element)">
+          <mat-icon aria-hidden="false" aria-label="edit" color="primary">edit</mat-icon>
+        </button>
+        <button mat-button matTooltip="Delete" color="warn" (click)="deleteModal(element.id)">
+          <mat-icon aria-hidden="false" aria-label="delete">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
@@ -90,4 +105,3 @@
     </div>
   </div>
 </div> -->
-

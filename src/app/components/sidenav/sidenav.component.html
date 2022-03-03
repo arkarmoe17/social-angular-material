@@ -1,0 +1,11 @@
+<mat-sidenav-container class="example-container" >
+    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
+                 (closed)="events.push('close!')" style="background-color: aqua;">
+      Sidenav content
+    </mat-sidenav>
+  
+    <mat-sidenav-content style="background-color: green;">
+        <mat-icon (click)="sidenav.toggle()"><span class="material-icons-outlined">menu</span></mat-icon>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
