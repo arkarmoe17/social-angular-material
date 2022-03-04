@@ -13,15 +13,16 @@ export interface AppParam {
 @Component({
   selector: 'app-app-param-view',
   templateUrl: './app-param-view.component.html',
-  styleUrls: ['./app-param-view.component.sass']
+  styleUrls: ['./app-param-view.component.css']
 })
 export class AppParamViewComponent implements OnInit {
+
+  displayedColumns: string[] = ['no', 'expired_min', 'otp_length','action'];
   parameters: AppParam[] = [];
 
   constructor(
     private appParamService : AppParamService,
     public dialog: MatDialog,
-
   ) { }
 
 

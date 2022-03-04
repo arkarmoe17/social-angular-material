@@ -45,8 +45,8 @@ export class CountryViewComponent implements OnInit {
 
   editModal(country : Country){
     const dialogRef = this.dialog.open(CountryUpdateComponent, {
-      height: '400px',
-      width: '450px',
+      height: '600px',
+      width: '600px',
       data: country,
     });
     dialogRef.afterClosed().subscribe(res => {

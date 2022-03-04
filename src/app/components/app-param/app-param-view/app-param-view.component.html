@@ -1,5 +1,4 @@
-<!-- This example requires Tailwind CSS v2.0+ -->
-<div class="container py-6">
+<!-- <div class="container py-6">
   <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -22,7 +21,6 @@
                   <button class="text-indigo-600 hover:text-indigo-900 pr-2" (click)="editModal(param)">Edit</button>
                 </td>
               </tr>
-              <!-- More people... -->
             </tbody>
           </table>  
         </div>
@@ -30,5 +28,40 @@
       </div>
     </div>
   </div>
+</div> -->
+
+
+
+<div class="mr-12 ml-12 mb-9 pt-10">  
+  <table mat-table [dataSource]="parameters" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="no">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element, let i = index"> {{i+1}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expired_min">
+      <th mat-header-cell *matHeaderCellDef> OTP Expired Minutes</th>
+      <td mat-cell *matCellDef="let element"> {{element.otpExpireMin}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="otp_length">
+      <th mat-header-cell *matHeaderCellDef> OTP Length </th>
+      <td mat-cell *matCellDef="let element"> {{element.otpLength}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Status </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button matTooltip="Update" (click)="editModal(element)">
+          <mat-icon aria-hidden="false" aria-label="edit" color="primary">edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
 
