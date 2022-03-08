@@ -8,6 +8,7 @@ import { CountryViewComponent } from './country/country-view/country-view.compon
 import { CustomerLoginComponent } from './customer-login/customer-login.component';
 import { CustomerRegisterComponent } from './customer-register/customer-register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LanguageComponent } from './language/language.component';
 import { SecurityQuestionViewComponent } from './security-question/security-question-view/security-question-view.component';
 
 const routes: Routes = [
@@ -43,6 +44,10 @@ const routes: Routes = [
         path: 'security-question',
         component: SecurityQuestionViewComponent,
       },
+      {
+        path: "language",
+        component: LanguageComponent
+      }
     ]
   },
 ];

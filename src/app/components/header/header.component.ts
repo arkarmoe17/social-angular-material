@@ -19,6 +19,8 @@ export const ROUTES: RouteInfo[] = [
   { path: '/country', title: 'Country', icon: '', class: '' },
   { path: '/app-param', title: 'App Parameter', icon: '', class: '' },
   { path: '/security-question', title: 'Security Question', icon: '', class: '' },
+  { path: '/language', title: 'Language', icon: '', class: '' },
+
 ];
 
 @Component({
@@ -38,7 +40,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void { 
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     console.log("menu Item:{}",this.menuItems);
-    
   }
 
   logout() {

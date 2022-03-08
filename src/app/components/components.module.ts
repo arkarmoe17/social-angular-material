@@ -39,7 +39,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatTooltipModule} from '@angular/material/tooltip';
-
+import { LanguageComponent } from './language/language.component';
 
 
 const MaterialModules = [
@@ -57,32 +57,35 @@ const MaterialModules = [
   MatTooltipModule
 ]
 
+const AppComponents =[
+  CustomerRegisterComponent,
+  CountDownComponent,
+  CartViewComponent,
+  CustomerLoginComponent,
+  DashboardComponent,
+  MainComponent,
+  CheckoutComponent,
+  CountryViewComponent,
+  CountryCreateComponent,
+  CountryUpdateComponent,
+  SidebarComponent,
+  AppParamViewComponent,
+  AppParamUpdateComponent,
+  ClickOutsideDirective,
+  SecurityQuestionViewComponent,
+  SecurityQuestionCreateComponent,
+  SecurityQuestionUpdateComponent,
+  FooterComponent,
+  CountryRemoveComponent,
+  HeaderComponent,
+  ModalComponent,
+  SecurityQuestionDeleteComponent,
+  SidenavComponent,
+  LanguageComponent,
+]
+
 @NgModule({
-  declarations: [
-    CustomerRegisterComponent,
-    CountDownComponent,
-    CartViewComponent,
-    CustomerLoginComponent,
-    DashboardComponent,
-    MainComponent,
-    CheckoutComponent,
-    CountryViewComponent,
-    CountryCreateComponent,
-    CountryUpdateComponent,
-    SidebarComponent,
-    AppParamViewComponent,
-    AppParamUpdateComponent,
-    ClickOutsideDirective,
-    SecurityQuestionViewComponent,
-    SecurityQuestionCreateComponent,
-    SecurityQuestionUpdateComponent,
-    FooterComponent,
-    CountryRemoveComponent,
-    HeaderComponent,
-    ModalComponent,
-    SecurityQuestionDeleteComponent,
-    SidenavComponent,
-  ],
+  declarations: AppComponents,
   imports: [
     CommonModule,
     ComponentsRoutingModule,
