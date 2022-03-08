@@ -24,4 +24,9 @@ export class LanguageService {
     return this.http.post(`${this.language_url}/new`,data);
   }
 
+  //update language
+  updateLanguage(id:number,data:any){
+    return this.http.put(`${this.language_url}/${id}`,data);
+  }
+
 }

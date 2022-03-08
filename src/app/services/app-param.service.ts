@@ -10,14 +10,14 @@ export class AppParamService {
   app_param_url = APP_PARAMETER
 
   constructor(
-    private httpClient: HttpClient,
+    private http: HttpClient,
   ) { }
 
   getAllAppParameters():Observable<any> {
-    return this.httpClient.get<any>(`${this.app_param_url}/lists`);
+    return this.http.get<any>(`${this.app_param_url}/lists`);
   }
 
   update(id:number, data:any){
-    return this.httpClient.put(`${this.app_param_url}/${id}`,data);
+    return this.http.put(`${this.app_param_url}/${id}`,data);
   }
 }

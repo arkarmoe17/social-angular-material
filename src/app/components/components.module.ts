@@ -40,6 +40,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LanguageComponent } from './language/language.component';
 import { LanguageCreateComponent } from './language/language-create/language-create.component';
+import { LanguageUpdateComponent } from './language/language-update/language-update.component';
 
 
 const MaterialModules = [
@@ -81,7 +82,8 @@ const AppComponents = [
   SecurityQuestionDeleteComponent,
   SidenavComponent,
   LanguageComponent,
-  LanguageCreateComponent
+  LanguageCreateComponent,
+  LanguageUpdateComponent,
 ]
 
 @NgModule({

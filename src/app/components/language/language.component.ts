@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LanguageService } from 'src/app/services/language.service';
 import { Language } from 'src/app/utils/_entities/language/language';
 import { LanguageCreateComponent } from './language-create/language-create.component';
+import { LanguageUpdateComponent } from './language-update/language-update.component';
 
 @Component({
   selector: 'app-language',
@@ -26,6 +27,7 @@ export class LanguageComponent implements OnInit {
     })
   }
 
+  //create modal
   createModal():void{
     const dialogRef = this.dialog.open(LanguageCreateComponent, {
       height: '500px',
@@ -35,6 +37,19 @@ export class LanguageComponent implements OnInit {
       this.reloadData();    
     });
   }
+
+  //update modal
+  updateModal(language : Language){    
+    const dialogRef = this.dialog.open(LanguageUpdateComponent,{
+      height: '500px',
+      width: '600px',
+      data : language
+    });
+    dialogRef.afterClosed().subscribe(res=>{
+      this.reloadData();
+    })
+  }
+
 
   reloadData(){
     this.getLanguageLists();

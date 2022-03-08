@@ -44,7 +44,6 @@ export class LanguageCreateComponent implements OnInit {
   }
 
   createLanguage() {
-    console.log("language form :", this.languageForm.value);
     this.languageService.createLanguage(this.languageForm.value)
       .subscribe({
         next: (data) => {

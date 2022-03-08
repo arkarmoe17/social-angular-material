@@ -1,5 +1,5 @@
-<form [formGroup]="languageForm" (ngSubmit)="createLanguage()">
-    <h2 mat-dialog-title>Create Language</h2>
+<form [formGroup]="languageForm" (ngSubmit)="updateLanguage()">
+    <h2 mat-dialog-title>Update Language</h2>
     <mat-divider style="padding-bottom: 10px;"></mat-divider>
         <div class="input-container">
           <mat-form-field appearance="fill" [style.width.%]="100">
@@ -23,15 +23,14 @@
           </mat-form-field>
         </div>
         <div class="input-container">
-          <mat-form-field appearance="fill" [style.width.%]="100">
+          <mat-form-field  [style.width.%]="100">
               <mat-label>Locale</mat-label>
-              <input type="number" matInput [min]=0 [max]=100 placeholder="" [formControl]="locale" formControlName="locale" required>
-              <mat-error *ngIf="locale.invalid">{{'Pls pass the valid value. max<100'}}</mat-error>
+              <input type="number" matInput [min]=0 [max]=100  [formControl]="locale" formControlName="locale" readonly [disabled]="true">
           </mat-form-field>
         </div>
         
       <mat-dialog-actions align="end">
-        <button mat-button mat-raised-button color="primary" type="submit" [disabled]="languageForm.invalid">Confirm</button>
+        <button mat-button mat-raised-button color="primary" type="submit" [disabled]="languageForm.invalid" >Confirm</button>
         <button mat-button mat-raised-button [mat-dialog-close]="true" color="warn">Cancel</button>
       </mat-dialog-actions>
   </form>

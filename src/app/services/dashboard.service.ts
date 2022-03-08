@@ -10,12 +10,12 @@ export class DashboardService {
   dashboard_url = DASHBOARD;
 
   constructor(
-    private httpClient: HttpClient,
+    private http: HttpClient,
   ) { }
 
   //reg_login_count 
   getRegAndLoginUserCount(): Observable<any> {
-    return this.httpClient.get<any>(`${this.dashboard_url}/register-login/count`);
+    return this.http.get<any>(`${this.dashboard_url}/register-login/count`);
   }
 
 }
