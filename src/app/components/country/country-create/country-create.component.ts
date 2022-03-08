@@ -70,7 +70,7 @@ export class CountryCreateComponent implements OnInit {
           this.closeDialog();
         },
         error: (_e)=>{
-          console.error("submition fail.")
+          console.error("submission fail.")
         }
       });
   }

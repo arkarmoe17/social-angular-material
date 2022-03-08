@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ComponentsRoutingModule } from './components-routing.module';
-import { ClickOutsideDirective } from '../utils/directive/click-outside.directive';
 import { AppParamUpdateComponent } from './app-param/app-param-update/app-param-update.component';
 import { AppParamViewComponent } from './app-param/app-param-view/app-param-view.component';
 import { CartViewComponent } from './cart-view/cart-view.component';
@@ -25,21 +24,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { ModalModule } from '../services/modal/modal.module';
 import { ModalComponent } from './modal/modal.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
-import {MatTableModule} from '@angular/material/table';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { SecurityQuestionDeleteComponent } from './security-question/security-question-delete/security-question-delete.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { LanguageComponent } from './language/language.component';
+import { LanguageCreateComponent } from './language/language-create/language-create.component';
 
 
 const MaterialModules = [
@@ -57,7 +57,7 @@ const MaterialModules = [
   MatTooltipModule
 ]
 
-const AppComponents =[
+const AppComponents = [
   CustomerRegisterComponent,
   CountDownComponent,
   CartViewComponent,
@@ -71,7 +71,6 @@ const AppComponents =[
   SidebarComponent,
   AppParamViewComponent,
   AppParamUpdateComponent,
-  ClickOutsideDirective,
   SecurityQuestionViewComponent,
   SecurityQuestionCreateComponent,
   SecurityQuestionUpdateComponent,
@@ -82,6 +81,7 @@ const AppComponents =[
   SecurityQuestionDeleteComponent,
   SidenavComponent,
   LanguageComponent,
+  LanguageCreateComponent
 ]
 
 @NgModule({
@@ -93,12 +93,12 @@ const AppComponents =[
     ReactiveFormsModule,
     MaterialModules
   ],
-  exports:[
+  exports: [
     MaterialModules
   ],
-  providers:[
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}},
-    {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
+  providers: [
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
   ]
 })
 export class ComponentsModule { }

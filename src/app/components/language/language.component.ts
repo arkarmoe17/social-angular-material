@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { LanguageService } from 'src/app/services/language.service';
 import { Language } from 'src/app/utils/_entities/language/language';
+import { LanguageCreateComponent } from './language-create/language-create.component';
 
 @Component({
   selector: 'app-language',
@@ -12,6 +14,7 @@ export class LanguageComponent implements OnInit {
   languages: Language[] = []
 
   constructor(
+    private dialog : MatDialog,
     private languageService: LanguageService
   ) { }
 
@@ -23,6 +26,19 @@ export class LanguageComponent implements OnInit {
     })
   }
 
+  createModal():void{
+    const dialogRef = this.dialog.open(LanguageCreateComponent, {
+      height: '500px',
+      width: '600px',
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      this.reloadData();    
+    });
+  }
+
+  reloadData(){
+    this.getLanguageLists();
+  }
 
   ngOnInit(): void {
     this.getLanguageLists();

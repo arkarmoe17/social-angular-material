@@ -19,4 +19,9 @@ export class LanguageService {
     return this.http.get<any>(`${this.language_url}/lists`)
   }
 
+  //create language 
+  createLanguage(data:any){
+    return this.http.post(`${this.language_url}/new`,data);
+  }
+
 }
