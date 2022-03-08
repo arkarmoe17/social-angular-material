@@ -15,10 +15,12 @@ export interface SecurityQuestion {
 @Component({
   selector: 'app-security-question-view',
   templateUrl: './security-question-view.component.html',
-  styleUrls: ['./security-question-view.component.sass']
+  styleUrls: ['./security-question-view.component.css']
 })
 export class SecurityQuestionViewComponent implements OnInit {
   questions: SecurityQuestion[] = [];
+  displayedColumns: string[] = ['no', 'type', 'name', 'action'];
+
   constructor(
     public dialog : MatDialog,
     private securityQuestionService: SecurityQuestionService,
@@ -29,7 +31,7 @@ export class SecurityQuestionViewComponent implements OnInit {
   getAllSecurityQuestions() {
     return this.securityQuestionService.getAllSecurityQuestions().subscribe(
       res => {
-        this.questions = res.data;
+        this.questions = res.data.securityQuestionRespList;
         console.log("security question :{}",this.questions);
       }
     );

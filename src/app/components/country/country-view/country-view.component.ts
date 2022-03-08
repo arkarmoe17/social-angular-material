@@ -56,7 +56,7 @@ export class CountryViewComponent implements OnInit {
   
   getCountryLists() {
     return this.countryService.getCountryLists().subscribe(res => {
-      this.countries = res.data;
+      this.countries = res.data.countryInfoList;
       console.log("country data:", this.countries);
     });
   }

@@ -2,14 +2,14 @@
     <h2 mat-dialog-title>Update Security Question</h2>
     <mat-divider style="padding-bottom: 10px;"></mat-divider>
         <div class="input-container">
-          <mat-form-field appearance="fill"  style="width: 350px;">
+          <mat-form-field appearance="fill" [style.width.%]="100">
             <mat-label>Question Type</mat-label>
-            <input matInput type="number" [min]=0 placeholder="" [formControl]="questionType" required>
-            <mat-error *ngIf="questionType.invalid">{{'Pls pass the valid name, max<10'}}</mat-error>
+            <input matInput type="number" [min]=0 [max]=1000 placeholder="" [formControl]="questionType" required>
+            <mat-error *ngIf="questionType.invalid">{{'Pls pass the valid name, max<1000'}}</mat-error>
           </mat-form-field>
         </div>
         <div class="input-container">
-          <mat-form-field appearance="fill" style="width: 350px;">
+          <mat-form-field appearance="fill" [style.width.%]="100">
             <mat-label>Question Name</mat-label>
             <input matInput placeholder="" [formControl]="question" required>
             <mat-error *ngIf="question.invalid">{{'Pls pass the valid name'}}</mat-error>

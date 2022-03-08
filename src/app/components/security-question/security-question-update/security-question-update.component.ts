@@ -7,7 +7,7 @@ import { SecurityQuestion } from '../security-question-view/security-question-vi
 @Component({
   selector: 'app-security-question-update',
   templateUrl: './security-question-update.component.html',
-  styleUrls: ['./security-question-update.component.sass']
+  styleUrls: ['./security-question-update.component.css']
 })
 export class SecurityQuestionUpdateComponent implements OnInit {
   questionForm !:FormGroup
@@ -26,8 +26,8 @@ export class SecurityQuestionUpdateComponent implements OnInit {
 
   generateForm(){
     this.questionForm = this.fb.group({
-      questionType: ['',[Validators.required,Validators.maxLength(10),Validators.pattern('^[1-9]\\d*$')]],
-      question: ['',[Validators.required,Validators.maxLength(50),Validators.pattern('^[1-9]\\d*$')]],
+      questionType: ['',[Validators.required,Validators.pattern('^[1-9]\\d*$')]],
+      question: ['',[Validators.required,Validators.maxLength(50)]],
     });
   }
   get questionType() :any{

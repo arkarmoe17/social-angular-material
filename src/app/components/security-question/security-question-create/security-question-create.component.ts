@@ -10,6 +10,7 @@ import { SecurityQuestionService } from 'src/app/services/security-question.serv
 })
 export class SecurityQuestionCreateComponent implements OnInit {
   questionForm !: FormGroup;
+  localeFrom !: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -19,10 +20,15 @@ export class SecurityQuestionCreateComponent implements OnInit {
 
   generateForm(){
     this.questionForm = this.fb.group({
-      questionType: ['',[Validators.required,Validators.maxLength(10)]],
+      questionType: ['',[Validators.required]],
       question: ['',[Validators.required,Validators.maxLength(50)]],
+      // localeFrom : this.fb.group({
+      //   name : ['',[Validators.required]],
+      //   locale: ['',[Validators.required]]
+      // })
     });
   }
+
 
   get questionType() : any{
     return this.questionForm.get('questionType');

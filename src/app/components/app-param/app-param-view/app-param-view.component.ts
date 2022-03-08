@@ -30,7 +30,7 @@ export class AppParamViewComponent implements OnInit {
   getAllAppParameters(){
     return this.appParamService.getAllAppParameters().subscribe(
       res => {
-        this.parameters = res.data;
+        this.parameters = res.data.appParameterList;
         console.log("App parameters:{}",this.parameters);
       }
     );
