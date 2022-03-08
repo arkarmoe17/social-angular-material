@@ -8,7 +8,7 @@ import { MASTER_DATA } from '../utils/_constants/api-constant';
 })
 export class CountryService {
 
-  master_url = MASTER_DATA;
+  country_url = MASTER_DATA.COUNTRY;
 
   constructor(
     private httpClient: HttpClient
@@ -17,22 +17,22 @@ export class CountryService {
 
   //fetch all countries
   getCountryLists(): Observable<any> {
-    return this.httpClient.get<any>(`${this.master_url.COUNTRY}/lists`);
+    return this.httpClient.get<any>(`${this.country_url}/lists`);
   }
 
   //delete country
   deleteCountry(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.master_url.COUNTRY}/${id}`, { responseType: 'text' });
+    return this.httpClient.delete(`${this.country_url}/${id}`, { responseType: 'text' });
   }
 
   //create country
   createCountry(data: any) {
-    return this.httpClient.post(`${this.master_url.COUNTRY}/new`, data);
+    return this.httpClient.post(`${this.country_url}/new`, data);
   }
 
   //update country
-  updateCountry(id:number, data: any){
-    return this.httpClient.put(`${this.master_url.COUNTRY}/${id}`,data)
+  updateCountry(id: number, data: any) {
+    return this.httpClient.put(`${this.country_url}/${id}`, data)
   }
 
 }

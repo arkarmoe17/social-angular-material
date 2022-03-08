@@ -12,7 +12,7 @@ import { CountryUpdateComponent } from '../country-update/country-update.compone
   templateUrl: './country-view.component.html',
 })
 export class CountryViewComponent implements OnInit {
-  displayedColumns: string[] = ['no', 'name', 'code',"nick","prefix","flag_url", 'status'];
+  displayedColumns: string[] = ['no', 'name', 'code',"nick","prefix","flag_url", 'action'];
   countries: Country[] = [];
   showCountryModal = false;
   showUpdateModal = false;
@@ -70,7 +70,5 @@ export class CountryViewComponent implements OnInit {
   }
  
 }
-function getCountryLists() {
-  throw new Error('Function not implemented.');
-}
+
 

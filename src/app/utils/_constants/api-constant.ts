@@ -16,6 +16,7 @@ export const CUSTOMER ={
 }
 export const MASTER_DATA ={
    COUNTRY: `${BASE_URL}/country`,
+   LANGUAGE : `${BASE_URL}/languages`
 }
 export const REGISTER = `${BASE_URL}/register/customerRegister`;
 export const DASHBOARD = `${BASE_URL}/dashboard`;
